@@ -15,9 +15,10 @@ def los_edificios():
     """
     r = requests.get("http://127.0.0.1:8000/api/edificios",
             auth=(user, password))
-    edificios = json.loads(r.content)
+    edificios = json.loads(r.content)['results']
+    numero_edificios = json.loads(r.content)['count']
     return render_template("losedificios.html", edificios=edificios,
-    numero_edificios=len(edificios))
+    numero_edificios=numero_edificios)
 
 @app.route("/losdepartamentos")
 def los_departamentos():
@@ -25,6 +26,7 @@ def los_departamentos():
     """
     r = requests.get("http://127.0.0.1:8000/api/departamentos",
             auth=(user, password))
-    departamentos = json.loads(r.content)
+    departamentos = json.loads(r.content)['results']
+    numero_departamentos = json.loads(r.content)['count']
     return render_template("losdepartamentos.html", departamentos=departamentos,
-    numero_departamentos=len(departamentos))
+    numero_departamentos=numero_departamentos)
