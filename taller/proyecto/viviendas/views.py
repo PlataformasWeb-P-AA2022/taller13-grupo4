@@ -92,13 +92,13 @@ def editar_edificio(request, id):
 
     return render(request, 'editarEdificio.html', diccionario)
 
-
+@login_required(login_url='/entrando/login/')
 def eliminar_edificio(request, id):
     edificio = Edificio.objects.get(pk=id)
     edificio.delete()
     return redirect(index)
 
-
+@login_required(login_url='/entrando/login/')
 def crear_departamento(request):
 
     if request.method=='POST':
@@ -113,7 +113,7 @@ def crear_departamento(request):
 
     return render(request, 'crearDepartamento.html', diccionario)
 
-
+@login_required(login_url='/entrando/login/')
 def editar_departamento(request, id):
     departamento = Departamento.objects.get(pk=id)
     if request.method=='POST':
@@ -128,13 +128,13 @@ def editar_departamento(request, id):
 
     return render(request, 'crearDepartamento.html', diccionario)
 
-
+@login_required(login_url='/entrando/login/')
 def eliminar_departamento(request, id):
     departamento = Departamento.objects.get(pk=id)
     departamento.delete()
     return redirect(index)
 
-
+@login_required(login_url='/entrando/login/')
 def crear_departamento_edificio(request, id):
     """
     """
